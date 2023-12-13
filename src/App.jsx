@@ -29,22 +29,16 @@ function App() {
 
   const currentPokemon = pokemonList[pokemonIndex];
 
-  const goToPreviousPokemon = () => {
-    setPokemonIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const goToNextPokemon = () => {
-    setPokemonIndex((prevIndex) => Math.min(prevIndex + 1, pokemonList.length - 1));
+  const handlePokemonClick = (index) => {
+    setPokemonIndex(index);
   };
 
   return (
     <div>
       <PokemonCard pokemon={currentPokemon} />
       <NavBar
-        onPreviousClick={goToPreviousPokemon}
-        onNextClick={goToNextPokemon}
-        hasPrevious={pokemonIndex > 0}
-        hasNext={pokemonIndex < pokemonList.length - 1}
+        pokemonList={pokemonList}
+        onPokemonClick={handlePokemonClick}
       />
     </div>
   );
